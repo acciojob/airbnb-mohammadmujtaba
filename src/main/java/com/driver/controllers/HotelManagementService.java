@@ -13,13 +13,11 @@ public class HotelManagementService {
     HotelManagementRepository hotelManagementRepository = new HotelManagementRepository();
 
     public String addHotel(Hotel hotel) {
-        if(Objects.isNull(hotel) || Objects.isNull(hotel.getHotelName()))
+        Hotel present =  hotelManagementRepository.getHotel(hotel.getHotelName());
+
+        if(Objects.isNull(hotel) || Objects.isNull(hotel.getHotelName()) || !Objects.isNull(present) )
             return "FAILURE";
 
-        Boolean present =  hotelManagementRepository.isPresent(hotel.getHotelName());
-
-        if(!present)
-            return "FAILURE";
 
         hotelManagementRepository.saveHotel(hotel);
         return "SUCCESS";
