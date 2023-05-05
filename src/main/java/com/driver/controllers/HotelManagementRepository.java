@@ -26,12 +26,6 @@ public class HotelManagementRepository {
         return hotels;
     }
 
-    public Boolean isPresent(String hotelName) {
-        if(hotelDb.containsKey(hotelName))
-            return true;
-
-        return false;
-    }
 
     public void saveHotel(Hotel hotel) {
         hotelDb.put(hotel.getHotelName(), hotel);
